@@ -11,7 +11,7 @@ struct SmartHomeView: View {
     
     @State private var text: String = ""
     @State private var secText: String = ""
-    @State private var isOn: Bool = false
+    @State private var isOn: Bool = true
     
     var body: some View {
         VStack {
@@ -45,7 +45,7 @@ struct SmartHomeView: View {
                 .font(.system(size: 30))
             
             if isOn {
-                RoomView()
+                RoomView(isOn: $isOn)
             }
             
             Toggle("Raumvorschau anzeigen", isOn: $isOn)
