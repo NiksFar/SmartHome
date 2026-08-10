@@ -16,23 +16,20 @@ struct RoomView: View {
             
             Color.orange
                 .frame(width: 300, height: 500)
-                .cornerRadius(20)
                 .padding(25)
-                .tint(.black)
                 .background(.white)
                 .cornerRadius(20)
+                .shadow(color: Color.black.opacity(0.3), radius: 5)
             
             Button {
                 isOn = false
             } label: {
-                Image(systemName: "xmark.circle.fill")
+                Image(systemName: "x.square.fill")
                     .resizable()
-                    .frame(width: 30, height: 30)
-                    
+                    .frame(width: 25, height: 25)
             }
-
+            
         }
-        
     }
 }
 

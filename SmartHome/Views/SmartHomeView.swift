@@ -11,10 +11,16 @@ struct SmartHomeView: View {
     
     @State private var text: String = ""
     @State private var secText: String = ""
-    @State private var isOn: Bool = true
+    @State private var isOn: Bool = false
     
     var body: some View {
+        
         VStack {
+            
+            Text("Smart Home")
+                .font(Font.largeTitle.bold())
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading, 15)
             
             HStack(alignment: .center, spacing: 20) {
                 
@@ -22,10 +28,10 @@ struct SmartHomeView: View {
                     .frame(height: 50)
                     .padding(.leading, 10)
                     .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color.gray)
-                        )
-                    
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.gray)
+                    )
+                
                 Button("Hinzufügen") {
                     secText = text
                 }
