@@ -10,10 +10,9 @@ import SwiftUI
 struct SmartHomeView: View {
     
     @State private var text: String = ""
-    @State private var secText: String = ""
     @State private var isOn: Bool = false
     
-    var devices: [SmartDevice] = [
+    @State private var devices: [SmartDevice] = [
         SmartDevice(name: "Wohnzimmerlicht", type: .light),
         SmartDevice(name: "Heizung", type: .thermostat),
         SmartDevice(name: "Haustür", type: .lock)
@@ -30,7 +29,7 @@ struct SmartHomeView: View {
             
             HStack(alignment: .center, spacing: 20) {
                 
-                TextField("Enter your name", text: $text)
+                TextField("Enter your device", text: $text)
                     .frame(height: 50)
                     .padding(.leading, 10)
                     .overlay(
@@ -39,7 +38,7 @@ struct SmartHomeView: View {
                     )
                 
                 Button("Hinzufügen") {
-                    secText = text
+                    devices.append(SmartDevice(name: text, type: .light))
                 }
                 .frame(width: 120, height: 50)
                 .foregroundColor(Color.white)
@@ -50,20 +49,18 @@ struct SmartHomeView: View {
             .frame(maxWidth: .infinity)
             .frame(height: 70)
             
-            Text(secText)
-                .fontWeight(.semibold)
-                .font(.system(size: 30))
-            
-            ForEach(devices) { device in
-                HStack {
-                    Text(device.name)
-                    Spacer()
-                    Text(device.type.rawValue)
+            ScrollView {
+                ForEach(devices) { device in
+                    
+                    HStack {
+                        Text(device.name)
+                        Spacer()
+                        Text(device.type.rawValue)
+                    }
+                    .padding(.leading, 15)
+                    .padding(.trailing, 15)
+                    
                 }
-                .padding(.leading, 15)
-                .padding(.trailing, 15)
-                
-                
             }
             
             if isOn {
