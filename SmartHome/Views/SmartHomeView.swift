@@ -13,6 +13,12 @@ struct SmartHomeView: View {
     @State private var secText: String = ""
     @State private var isOn: Bool = false
     
+    var devices: [SmartDevice] = [
+        SmartDevice(name: "Wohnzimmerlicht", type: .light),
+        SmartDevice(name: "Heizung", type: .thermostat),
+        SmartDevice(name: "Haustür", type: .lock)
+    ]
+    
     var body: some View {
         
         VStack {
@@ -39,8 +45,6 @@ struct SmartHomeView: View {
                 .foregroundColor(Color.white)
                 .background(Color.blue)
                 .cornerRadius(10)
-                
-                
             }
             .padding(15)
             .frame(maxWidth: .infinity)
@@ -49,6 +53,18 @@ struct SmartHomeView: View {
             Text(secText)
                 .fontWeight(.semibold)
                 .font(.system(size: 30))
+            
+            ForEach(devices) { device in
+                HStack {
+                    Text(device.name)
+                    Spacer()
+                    Text(device.type.rawValue)
+                }
+                .padding(.leading, 15)
+                .padding(.trailing, 15)
+                
+                
+            }
             
             if isOn {
                 RoomView(isOn: $isOn)
