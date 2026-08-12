@@ -50,13 +50,12 @@ struct SmartHomeView: View {
             .frame(maxWidth: .infinity)
             .frame(height: 70)
             
-            Toggle("Grid", isOn: $isGrid)
+            Toggle("Grid/Scroll", isOn: $isGrid)
                 .padding(15)
             
             if isGrid {
                 // Mark: Grid
-                
-                Grid {
+                Grid(alignment: .leading) {
                     ForEach(
                         Array(stride(from: 0, to: devices.count, by: 2)),
                         id: \.self
@@ -67,6 +66,7 @@ struct SmartHomeView: View {
                                 Text(devices[index].name)
                                 Text(devices[index].type.rawValue)
                             }
+                            .padding(5)
                             if index+1 < devices.count {
                                 VStack(alignment: .leading, spacing: 10) {
                                     Text(devices[index+1].name)
@@ -76,6 +76,7 @@ struct SmartHomeView: View {
                         }
                     }
                 }
+                .padding(15)
             } else {
                 //
                 ScrollView {
