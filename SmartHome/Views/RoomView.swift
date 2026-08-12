@@ -15,7 +15,7 @@ struct RoomView: View {
         ZStack(alignment: .topTrailing) {
             
             Color.orange
-                .frame(width: 300, height: 500)
+                .frame(width: 300, height: 400)
                 .padding(25)
                 .background(.white)
                 .cornerRadius(20)

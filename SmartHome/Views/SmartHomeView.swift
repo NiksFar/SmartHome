@@ -11,6 +11,7 @@ struct SmartHomeView: View {
     
     @State private var text: String = ""
     @State private var isOn: Bool = false
+    @State private var isGrid: Bool = true
     
     @State private var devices: [SmartDevice] = [
         SmartDevice(name: "Wohnzimmerlicht", type: .light),
@@ -49,19 +50,48 @@ struct SmartHomeView: View {
             .frame(maxWidth: .infinity)
             .frame(height: 70)
             
-            ScrollView {
-                ForEach(devices) { device in
-                    
-                    HStack {
-                        Text(device.name)
-                        Spacer()
-                        Text(device.type.rawValue)
+            Toggle("Grid", isOn: $isGrid)
+                .padding(15)
+            
+            if isGrid {
+                // Mark: Grid
+                
+                Grid {
+                    ForEach(
+                        Array(stride(from: 0, to: devices.count, by: 2)),
+                        id: \.self
+                    ) { index in
+                        
+                        GridRow {
+                            VStack(alignment: .leading, spacing: 10) {
+                                Text(devices[index].name)
+                                Text(devices[index].type.rawValue)
+                            }
+                            if index+1 < devices.count {
+                                VStack(alignment: .leading, spacing: 10) {
+                                    Text(devices[index+1].name)
+                                    Text(devices[index+1].type.rawValue)
+                                }
+                            }
+                        }
                     }
-                    .padding(.leading, 15)
-                    .padding(.trailing, 15)
-                    
+                }
+            } else {
+                //
+                ScrollView {
+                    ForEach(devices) { device in
+    
+                        HStack {
+                            Text(device.name)
+                            Spacer()
+                            Text(device.type.rawValue)
+                        }
+                        .padding(.leading, 15)
+                        .padding(.trailing, 15)
+                    }
                 }
             }
+            //
             
             if isOn {
                 RoomView(isOn: $isOn)
