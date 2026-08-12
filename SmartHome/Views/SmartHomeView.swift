@@ -11,7 +11,8 @@ struct SmartHomeView: View {
     
     @State private var text: String = ""
     @State private var isOn: Bool = false
-    @State private var isGrid: Bool = true
+    @State private var isGrid: Bool = false
+    @State private var selectedDeviceType: DeviceType = .light
     
     @State private var devices: [SmartDevice] = [
         SmartDevice(name: "Wohnzimmerlicht", type: .light),
@@ -38,19 +39,29 @@ struct SmartHomeView: View {
                             .stroke(Color.gray)
                     )
                 
-                Button("Hinzufügen") {
-                    devices.append(SmartDevice(name: text, type: .light))
+                Picker("Gerätetyp", selection: $selectedDeviceType) {
+                    ForEach(DeviceType.allCases) { deviceType in
+                        Text(deviceType.rawValue)
+                                .tag(deviceType)
+                    }
                 }
-                .frame(width: 120, height: 50)
-                .foregroundColor(Color.white)
-                .background(Color.blue)
-                .cornerRadius(10)
+                .pickerStyle(.menu)
             }
             .padding(15)
             .frame(maxWidth: .infinity)
             .frame(height: 70)
             
-            Toggle("Grid/Scroll", isOn: $isGrid)
+            Button("Hinzufügen") {
+                devices.append(SmartDevice(name: text, type: selectedDeviceType))
+            }
+            .frame(maxWidth: .infinity)
+            .frame(height: 50)
+            .foregroundColor(Color.white)
+            .background(Color.blue)
+            .cornerRadius(10)
+            .padding()
+            
+            Toggle("Grid", isOn: $isGrid)
                 .padding(15)
             
             if isGrid {
