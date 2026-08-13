@@ -10,7 +10,7 @@ import SwiftUI
 struct SmartHomeView: View {
     
     @State private var text: String = ""
-    @State private var isOn: Bool = false
+    @State private var isRoomViewShown: Bool = true
     @State private var isGrid: Bool = false
     @State private var selectedDeviceType: DeviceType = .light
     
@@ -42,7 +42,7 @@ struct SmartHomeView: View {
                 Picker("Gerätetyp", selection: $selectedDeviceType) {
                     ForEach(DeviceType.allCases) { deviceType in
                         Text(deviceType.rawValue)
-                                .tag(deviceType)
+                            .tag(deviceType)
                     }
                 }
                 .pickerStyle(.menu)
@@ -52,7 +52,12 @@ struct SmartHomeView: View {
             .frame(height: 70)
             
             Button("Hinzufügen") {
-                devices.append(SmartDevice(name: text, type: selectedDeviceType))
+                devices.append(
+                    SmartDevice(
+                        name: text,
+                        type: selectedDeviceType
+                    )
+                )
             }
             .frame(maxWidth: .infinity)
             .frame(height: 50)
@@ -92,7 +97,7 @@ struct SmartHomeView: View {
                 //
                 ScrollView {
                     ForEach(devices) { device in
-    
+                        
                         HStack {
                             Text(device.name)
                             Spacer()
@@ -105,11 +110,11 @@ struct SmartHomeView: View {
             }
             //
             
-            if isOn {
-                RoomView(isOn: $isOn)
+            if isRoomViewShown {
+                RoomView(isRoomViewShown: $isRoomViewShown, devices: devices)
             }
             
-            Toggle("Raumvorschau anzeigen", isOn: $isOn)
+            Toggle("Raumvorschau anzeigen", isOn: $isRoomViewShown)
                 .padding(20)
                 .tint(.blue)
         }

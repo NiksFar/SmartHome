@@ -12,8 +12,21 @@ struct SmartDevice: Identifiable {
     
     let name: String
     let type: DeviceType
-    let isOn: Bool = false
-    let temperature: Double = 20
-    let isLocked: Bool = true
+    let isOn: Bool
+    let temperature: Double
+    let isLocked: Bool
     
+    init(
+        name: String,
+        type: DeviceType,
+        isOn: Bool = false,
+        temperature: Double = 20,
+        isLocked: Bool = true
+    ) {
+        self.name = name
+        self.type = type
+        self.isOn = isOn
+        self.temperature = temperature
+        self.isLocked = isLocked
+    }
 }
