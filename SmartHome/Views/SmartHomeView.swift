@@ -31,7 +31,7 @@ struct SmartHomeView: View {
             
             HStack(alignment: .center, spacing: 20) {
                 
-                TextField("Enter your device", text: $text)
+                TextField("Neues Gerät", text: $text)
                     .frame(height: 50)
                     .padding(.leading, 10)
                     .overlay(
@@ -102,6 +102,16 @@ struct SmartHomeView: View {
                             Text(device.name)
                             Spacer()
                             Text(device.type.rawValue)
+                            
+                            Button {
+                                if let index = devices.firstIndex(where: { $0.id == device.id }) {
+                                    devices.remove(at: index)
+                                }
+                            } label: {
+                                Image(systemName: "trash")
+                            }
+                            
+                            
                         }
                         .padding(.leading, 15)
                         .padding(.trailing, 15)

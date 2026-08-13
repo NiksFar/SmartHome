@@ -6,9 +6,9 @@
 //
 
 enum DeviceType: String, Identifiable, CaseIterable {
-    case light = "Light"
+    case light = "Licht"
     case thermostat = "Thermostat"
-    case lock = "Lock"
+    case lock = "Schloss"
     
     var id: String {
         rawValue
