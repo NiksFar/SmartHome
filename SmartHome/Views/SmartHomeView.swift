@@ -96,8 +96,13 @@ struct SmartHomeView: View {
             } else {
                 //
                 ScrollView {
-                    ForEach(devices) { device in
+                    
+                    ForEach($devices) { $device in
                         
+                        SmartDeviceView(device: $device)
+                        
+                    }
+                     /*
                         HStack {
                             Text(device.name)
                             Spacer()
@@ -116,7 +121,9 @@ struct SmartHomeView: View {
                         .padding(.leading, 15)
                         .padding(.trailing, 15)
                     }
+                    */
                 }
+                
             }
             //
             

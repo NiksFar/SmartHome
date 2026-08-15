@@ -12,9 +12,19 @@ struct SmartDevice: Identifiable {
     
     let name: String
     let type: DeviceType
-    let isOn: Bool
-    let temperature: Double
-    let isLocked: Bool
+    var isOn: Bool
+    var temperature: Double = 20
+    var isLocked: Bool
+    var iconName: String {
+        switch type {
+                case .light:
+                    return "lightbulb"
+                case .thermostat:
+                    return "thermometer.medium"
+                case .lock:
+                    return "lock"
+                }
+    }
     
     init(
         name: String,
@@ -28,5 +38,6 @@ struct SmartDevice: Identifiable {
         self.isOn = isOn
         self.temperature = temperature
         self.isLocked = isLocked
+        
     }
 }
