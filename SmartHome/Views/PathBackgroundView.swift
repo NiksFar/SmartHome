@@ -13,7 +13,7 @@ struct PathBackgroundView: View {
             // Background wall
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color(UIColor.systemGray5))
-                .frame(width: 320, height: 350)
+                .frame(width: 320, height: 205)
                 .overlay(
                     VStack {
                         Spacer()
@@ -22,10 +22,10 @@ struct PathBackgroundView: View {
                             
                             // Left wall
                             Path { path in
-                                path.move(to: CGPoint(x: 10, y: 50))
-                                path.addLine(to: CGPoint(x: 65, y: 5))
-                                path.addLine(to: CGPoint(x: 65, y: 240))
-                                path.addLine(to: CGPoint(x: 10, y: 295))
+                                path.move(to: CGPoint(x: 0, y: 30))
+                                path.addLine(to: CGPoint(x: 45, y: 0))
+                                path.addLine(to: CGPoint(x: 45, y: 150))
+                                path.addLine(to: CGPoint(x: 0, y: 185))
                                 path.closeSubpath()
                             }
                             .fill(Color(UIColor.systemGray4))
@@ -36,29 +36,31 @@ struct PathBackgroundView: View {
             
             // Floor
             Path { path in
-                path.move(to: CGPoint(x: 105, y: 290))
-                path.addLine(to: CGPoint(x: 300, y: 290))
-                path.addLine(to: CGPoint(x: 270, y: 340))
-                path.addLine(to: CGPoint(x: 55, y: 340))
+                path.move(to: CGPoint(x: 35, y: 205))
+                path.addLine(to: CGPoint(x: 300, y: 205))
+                path.addLine(to: CGPoint(x: 335, y: 170))
+                path.addLine(to: CGPoint(x: 80, y: 170))
                 path.closeSubpath()
             }
             .fill(Color(UIColor.systemGray4))
             // Carpet
             Path { path in
-                path.move(to: CGPoint(x: 155, y: 300))
-                path.addLine(to: CGPoint(x: 265, y: 300))
-                path.addLine(to: CGPoint(x: 245, y: 330))
-                path.addLine(to: CGPoint(x: 130, y: 330))
+                path.move(to: CGPoint(x: 160, y: 170))
+                path.addLine(to: CGPoint(x: 255, y: 170))
+                path.addLine(to: CGPoint(x: 230, y: 190))
+                path.addLine(to: CGPoint(x: 135, y: 190))
                 path.closeSubpath()
             }
-            .fill(Color.red)
+            .fill(Color.green)
         }
         
-        .frame(width:360, height: 390)
+        .frame(width:340, height: 220)
         .background(Color(UIColor.systemGroupedBackground))
         .cornerRadius(12)
         .shadow(radius: 5)
+        .scaleEffect(1)
     }
+        
 }
 
 #Preview {

@@ -46,7 +46,9 @@ struct SmartDeviceView: View {
             }
         }
         .padding(20)
-        .background(RoundedRectangle(cornerRadius: 15).fill(Color.white).shadow(radius: 5))
+        .background(RoundedRectangle(cornerRadius: 15).fill(Color.white).shadow(radius: 5)
+            .padding(.horizontal, 15))
+        
         
     }
 }

@@ -18,13 +18,13 @@ struct RoomView: View {
             
             // Mark: Vstack
             
-            VStack(spacing: 40) {
+            VStack(spacing: 15) {
                 
                 HStack(spacing: 50) {
                     ForEach(devices) { device in
                         if device.type == .light {
                             Image(systemName: "lamp.ceiling.fill")
-                                .font(.system(size: 45))
+                                .font(.system(size: 30))
                                 .foregroundStyle(device.isOn ? .yellow : .black)
                             
                         }
@@ -35,10 +35,10 @@ struct RoomView: View {
                     ForEach(devices) { device in
                         if device.type == .thermostat {
                             Image(systemName: "thermometer")
-                                .font(.system(size: 35))
+                                .font(.system(size: 25))
                                 .foregroundStyle(device.isOn ? .red : .black)
                             Text("\(device.temperature, specifier: "%.1f")°C")
-                                .font(.system(size: 35))
+                                .font(.system(size: 25))
                         }
                     }
                 }
@@ -48,18 +48,18 @@ struct RoomView: View {
                         if device.type == .lock {
                             if device.isLocked {
                                 Image(systemName: "door.left.hand.closed")
-                                    .font(.system(size: 45))
+                                    .font(.system(size: 55))
                                     .foregroundStyle(.black)
                             } else {
                                 Image(systemName: "door.left.hand.open")
-                                    .font(.system(size: 45))
+                                    .font(.system(size: 55))
                                     .foregroundStyle(.red)
                             }
                         }
                     }
                 }
             }
-            .offset(x: 20, y: -40)
+            .offset(x: 15, y: -20)
             
             //
             Button {
@@ -67,10 +67,10 @@ struct RoomView: View {
             } label: {
                 Image(systemName: "x.square.fill")
                     .resizable()
-                    .frame(width: 25, height: 25)
+                    .frame(width: 20, height: 20)
                 
             }
-            .offset(x: 165, y: -180)
+            .offset(x: 150, y: -92)
             
         }
     }
