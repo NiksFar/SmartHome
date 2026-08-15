@@ -14,11 +14,7 @@ struct RoomView: View {
     
     var body: some View {
         ZStack(alignment: .center) {
-            
-            RoundedRectangle(cornerRadius: 20)
-                .fill(.white)
-                .frame(width: 300, height: 300)
-                .shadow(color: .black.opacity(0.2), radius: 5)
+            PathBackgroundView()
             
             // Mark: Vstack
             
@@ -62,9 +58,8 @@ struct RoomView: View {
                         }
                     }
                 }
-                
             }
-            
+            .offset(x: 20, y: -40)
             
             //
             Button {
@@ -75,7 +70,7 @@ struct RoomView: View {
                     .frame(width: 25, height: 25)
                 
             }
-            .offset(x: 135, y: -135)
+            .offset(x: 165, y: -180)
             
         }
     }

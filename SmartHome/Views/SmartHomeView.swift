@@ -10,7 +10,7 @@ import SwiftUI
 struct SmartHomeView: View {
     
     @State private var text: String = ""
-    @State private var isRoomViewShown: Bool = true
+    @State private var isRoomViewShown: Bool = false
     @State private var isGrid: Bool = false
     @State private var selectedDeviceType: DeviceType = .light
     
