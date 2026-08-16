@@ -96,7 +96,6 @@ struct SmartHomeView: View {
                             }
                         }
                     }
-                    .padding(15)
                 } else {
                     //
                     ScrollView {

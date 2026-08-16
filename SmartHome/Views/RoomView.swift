@@ -18,7 +18,7 @@ struct RoomView: View {
             
             // Mark: Vstack
             
-            VStack(spacing: 15) {
+            VStack(spacing: 5) {
                 
                 HStack(spacing: 50) {
                     ForEach(devices) { device in
@@ -34,11 +34,32 @@ struct RoomView: View {
                 HStack(spacing: 10) {
                     ForEach(devices) { device in
                         if device.type == .thermostat {
+                            /*
                             Image(systemName: "thermometer")
                                 .font(.system(size: 25))
                                 .foregroundStyle(device.isOn ? .red : .black)
                             Text("\(device.temperature, specifier: "%.1f")°C")
                                 .font(.system(size: 25))
+                            */
+                            
+                            Gauge(
+                                value: device.temperature,
+                                in: 15...35,
+                                label: {
+                                    Text("°C")
+                                },
+                                currentValueLabel: {
+                                    Text("\(device.temperature, specifier: "%.1f")")
+                                }
+                            )
+                            .gaugeStyle(.accessoryCircular)
+                            .tint(
+                                LinearGradient(
+                                    colors: [.blue, .red],
+                                    startPoint: .leading,
+                                    endPoint: .trailing
+                                )
+                            )
                         }
                     }
                 }
@@ -59,7 +80,7 @@ struct RoomView: View {
                     }
                 }
             }
-            .offset(x: 15, y: -20)
+            .offset(x: 15, y: -22)
             
             //
             Button {
@@ -83,6 +104,6 @@ struct RoomView: View {
         SmartDevice(name: "Tür1", type: .lock),
         SmartDevice(name: "Tür2", type: .lock, isLocked: false),
         SmartDevice(name: "Tür3", type: .lock, isLocked: true),
-        SmartDevice(name: "Thermo1", type: .thermostat)
+        SmartDevice(name: "Thermo1", type: .thermostat, temperature: 22)
     ])
 }
