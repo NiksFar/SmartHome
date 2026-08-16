@@ -26,7 +26,7 @@ struct RoomView: View {
                             Image(systemName: "lamp.ceiling.fill")
                                 .font(.system(size: 30))
                                 .foregroundStyle(device.isOn ? .yellow : .black)
-                            
+                                .symbolEffect(.bounce, value: device.isOn)
                         }
                     }
                 }
@@ -75,6 +75,7 @@ struct RoomView: View {
                                 Image(systemName: "door.left.hand.open")
                                     .font(.system(size: 55))
                                     .foregroundStyle(.red)
+                                    
                             }
                         }
                     }
@@ -105,6 +106,7 @@ struct RoomView: View {
                                         .degrees(45),
                                         axis: (x: 0, y: 1, z: 0)
                                     )
+                                .symbolEffect(.pulse, value: device.isOn)
                         } else {
                             Image(systemName: "tv")
                                 .font(.system(size: 40))
