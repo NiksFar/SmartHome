@@ -22,8 +22,8 @@ struct PathBackgroundView: View {
                             
                             // Left wall
                             Path { path in
-                                path.move(to: CGPoint(x: 0, y: 30))
-                                path.addLine(to: CGPoint(x: 45, y: 0))
+                                path.move(to: CGPoint(x: 0, y: 0))
+                                path.addLine(to: CGPoint(x: 45, y: 20))
                                 path.addLine(to: CGPoint(x: 45, y: 150))
                                 path.addLine(to: CGPoint(x: 0, y: 185))
                                 path.closeSubpath()
@@ -37,8 +37,8 @@ struct PathBackgroundView: View {
             // Floor
             Path { path in
                 path.move(to: CGPoint(x: 35, y: 205))
-                path.addLine(to: CGPoint(x: 300, y: 205))
-                path.addLine(to: CGPoint(x: 335, y: 170))
+                path.addLine(to: CGPoint(x: 340, y: 205))
+                path.addLine(to: CGPoint(x: 325, y: 170))
                 path.addLine(to: CGPoint(x: 80, y: 170))
                 path.closeSubpath()
             }
@@ -47,7 +47,7 @@ struct PathBackgroundView: View {
             Path { path in
                 path.move(to: CGPoint(x: 160, y: 170))
                 path.addLine(to: CGPoint(x: 255, y: 170))
-                path.addLine(to: CGPoint(x: 230, y: 190))
+                path.addLine(to: CGPoint(x: 260, y: 190))
                 path.addLine(to: CGPoint(x: 135, y: 190))
                 path.closeSubpath()
             }

@@ -42,14 +42,17 @@ struct SmartDeviceView: View {
                 .foregroundColor(Color.white)
                 .background(Color.red)
                 .cornerRadius(10)
-                
+            case .media:
+                Toggle(isOn: $device.isOn) {
+                }
             }
         }
         .padding(20)
-        .background(RoundedRectangle(cornerRadius: 15).fill(Color.white).shadow(radius: 5)
+        .background(RoundedRectangle(cornerRadius: 15)
+            .fill(Color.white)
+            .shadow(radius: 5)
             .padding(.horizontal, 15))
-        
-        
+            
     }
 }
         
@@ -139,6 +142,6 @@ struct SmartDeviceView: View {
 
 #Preview {
    SmartDeviceView(device:.constant(
-    SmartDevice(name: "Tür", type: .thermostat, isLocked: .init(true))
+    SmartDevice(name: "Fernseher", type: .media, isOn: .init(true))
    ))
 }

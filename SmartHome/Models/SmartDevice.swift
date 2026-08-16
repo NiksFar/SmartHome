@@ -23,6 +23,8 @@ struct SmartDevice: Identifiable {
                     return "thermometer.medium"
                 case .lock:
                     return "lock"
+                case .media:
+                    return "music.note"
                 }
     }
     

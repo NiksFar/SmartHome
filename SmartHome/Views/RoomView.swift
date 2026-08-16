@@ -93,6 +93,32 @@ struct RoomView: View {
             }
             .offset(x: 150, y: -92)
             
+            //
+            VStack(spacing: 10) {
+                ForEach(devices) { device in
+                    if device.type == .media {
+                        if device.isOn {
+                            Image(systemName: "tv")
+                                .font(.system(size: 40))
+                                .foregroundStyle(.blue)
+                                .rotation3DEffect(
+                                        .degrees(45),
+                                        axis: (x: 0, y: 1, z: 0)
+                                    )
+                        } else {
+                            Image(systemName: "tv")
+                                .font(.system(size: 40))
+                                .foregroundStyle(.black)
+                                .rotation3DEffect(
+                                        .degrees(45),
+                                        axis: (x: 0, y: 1, z: 0))
+                        }
+                    }
+                }
+            }
+            .offset(x: -122, y: 5)
+            //
+            
         }
     }
 }
@@ -102,8 +128,7 @@ struct RoomView: View {
         SmartDevice(name: "Lampe1", type: .light),
         SmartDevice(name: "Lampe2", type: .light, isOn: true),
         SmartDevice(name: "Tür1", type: .lock),
-        SmartDevice(name: "Tür2", type: .lock, isLocked: false),
-        SmartDevice(name: "Tür3", type: .lock, isLocked: true),
-        SmartDevice(name: "Thermo1", type: .thermostat, temperature: 22)
+        SmartDevice(name: "Thermo1", type: .thermostat, temperature: 22),
+        SmartDevice(name: "TV", type: .media, isOn: true)
     ])
 }

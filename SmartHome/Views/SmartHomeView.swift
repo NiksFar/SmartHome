@@ -17,7 +17,8 @@ struct SmartHomeView: View {
     @State private var devices: [SmartDevice] = [
         SmartDevice(name: "Wohnzimmerlicht", type: .light),
         SmartDevice(name: "Heizung", type: .thermostat),
-        SmartDevice(name: "Haustür", type: .lock)
+        SmartDevice(name: "Haustür", type: .lock),
+        SmartDevice(name: "Fernseher", type: .media)
     ]
     
     var body: some View {
